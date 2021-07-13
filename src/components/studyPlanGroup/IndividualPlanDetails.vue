@@ -36,17 +36,23 @@
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
           </v-col>
           <v-col class="text-right plan-sheet-details-video">
-            <v-row>
-              <v-col>
-                <v-card elevation="0" class="plan-sheet-details-video-thumbnail"></v-card>
-              </v-col>
-              <v-col>
-                فیلم جلسه 5 - حل تست فرسنگ ششم (قسمت فیلا...
-              </v-col>
-            </v-row>
+            <div>
+              <v-card
+                elevation="0"
+                class="plan-sheet-details-video-thumbnail"
+              />
+            </div>
+            <div>
+              <v-card
+                elevation="0"
+                class="plan-sheet-details-video-title"
+              >
+                فیلم جلسه 5 - حل تست فرسنگ ششم (قسمت فیلانقحخغنتحخفغنتخنتخنتختتلبرالزلزاعالنتلدذنتبلدنبتذدبلد
+              </v-card>
+            </div>
           </v-col>
           <v-col class="text-right">
-            <v-card class="plan-sheet-details-voice"></v-card>
+            <v-card class="plan-sheet-details-voice" />
           </v-col>
         </v-row>
       </v-card>
@@ -128,6 +134,11 @@ export default {}
   height: 42px;
   width: 72px;
   margin-top: 9px;
+}
+.theme--light.v-card .plan-sheet-details-video-title{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 25px;
 }
 
 </style>
