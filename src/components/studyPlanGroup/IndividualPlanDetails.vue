@@ -1,65 +1,67 @@
 <template>
-  <div class="plan-details">
-    <v-card elevation="0">
-      <v-sheet
-        class="plan-sheet"
-      >
-        <v-row>
-          <v-col class="text-right plan-sheet-title-1">
-            از ساعت 13
-          </v-col>
-          <v-col class="plan-sheet-title-2">
-            شیمی
-          </v-col>
-          <v-col class="text-left plan-sheet-title-3">
-            تا ساعت 14:30
-          </v-col>
-        </v-row>
-      </v-sheet>
-      <v-card
-        class="plan-sheet-details"
-        elevation="0"
-      >
-        <v-row>
-          <v-col class="text-right plan-sheet-details-title">
-            توضیحات
-          </v-col>
-          <v-col class="text-right plan-sheet-details-title">
-            فیلم ها
-          </v-col>
-          <v-col class="text-right plan-sheet-details-title">
-            تایتل صدا
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col class="text-right plan-sheet-details-info">
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
-          </v-col>
-          <v-col class="text-right plan-sheet-details-video">
-            <div class="plan-sheet-details-video-box">
-              <div>
-                <v-card
-                  elevation="0"
-                  class="plan-sheet-details-video-thumbnail"
-                />
+  <v-expansion-panel-content>
+    <div class="plan-details">
+      <v-card elevation="0">
+        <v-sheet
+          class="plan-sheet"
+        >
+          <v-row>
+            <v-col class="text-right plan-sheet-title-1">
+              از ساعت 13
+            </v-col>
+            <v-col class="plan-sheet-title-2">
+              شیمی
+            </v-col>
+            <v-col class="text-left plan-sheet-title-3">
+              تا ساعت 14:30
+            </v-col>
+          </v-row>
+        </v-sheet>
+        <v-card
+          class="plan-sheet-details"
+          elevation="0"
+        >
+          <v-row>
+            <v-col class="text-right plan-sheet-details-title">
+              توضیحات
+            </v-col>
+            <v-col class="text-right plan-sheet-details-title">
+              فیلم ها
+            </v-col>
+            <v-col class="text-right plan-sheet-details-title">
+              تایتل صدا
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="text-right plan-sheet-details-info">
+              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
+            </v-col>
+            <v-col class="text-right plan-sheet-details-video">
+              <div class="plan-sheet-details-video-box">
+                <div>
+                  <v-card
+                    elevation="0"
+                    class="plan-sheet-details-video-thumbnail"
+                  />
+                </div>
+                <div>
+                  <v-card
+                    elevation="0"
+                    class="plan-sheet-details-video-title"
+                  >
+                    فیلم جلسه 5 - حل تست فرسنگ ششم (قسمت فیلانقحخغنتحخفغنتخنتخنتختتلبرالزلزاعالنتلدذنتبلدنبتذدبلد
+                  </v-card>
+                </div>
               </div>
-              <div>
-                <v-card
-                  elevation="0"
-                  class="plan-sheet-details-video-title"
-                >
-                  فیلم جلسه 5 - حل تست فرسنگ ششم (قسمت فیلانقحخغنتحخفغنتخنتخنتختتلبرالزلزاعالنتلدذنتبلدنبتذدبلد
-                </v-card>
-              </div>
-            </div>
-          </v-col>
-          <v-col class="text-right">
-            <v-card class="plan-sheet-details-voice" />
-          </v-col>
-        </v-row>
+            </v-col>
+            <v-col class="text-right">
+              <v-card class="plan-sheet-details-voice" />
+            </v-col>
+          </v-row>
+        </v-card>
       </v-card>
-    </v-card>
-  </div>
+    </div>
+  </v-expansion-panel-content>
 </template>
 <script>
 export default {}
@@ -141,7 +143,18 @@ export default {}
   overflow: hidden;
   text-overflow: ellipsis;
   height: 25px;
-  margin-top: 7px;
+  width: 340px;
+  white-space:nowrap;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2.13;
+  letter-spacing: normal;
+  text-align: right;
+  color: #3e5480;
+  background-color: #eff3ff;
+  padding-right: 10px;
 }
 .plan-sheet-details-video-box{
   display: flex;

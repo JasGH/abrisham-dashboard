@@ -18,13 +18,8 @@
           item-text="name"
           solo
           flat
-        >
-          <template v-slot:actions>
-            <v-icon color="teal">
-              mdi-chevron-down
-            </v-icon>
-          </template>
-        </v-select>
+          append-icon="mdi-chevron-down"
+        />
       </div>
       <v-row>
         <v-expansion-panels
@@ -232,8 +227,6 @@ export default {
   background-color: #FFFFFF;
   padding: 2px 6px 0 6px;
 }
-
-
 </style>
 <style>
 .v-text-field fieldset, .v-text-field .v-input__control, .v-text-field .v-input__slot {
