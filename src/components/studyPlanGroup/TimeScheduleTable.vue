@@ -44,7 +44,7 @@
             right: calcPosition(p.start, p.end).right,
             width: calcPosition(p.start, p.end).width
           }"
-          @click="showPlanDetails(p.id)"
+          @click="showPlanDetails(p)"
         >
           <div
             class="plan-within-box"
@@ -85,7 +85,7 @@ export default {
         },
         plans: {
           type: PlanList,
-          default: new PlanList(),
+          default: new PlanList()
         },
       loading: {
         default: () => {
@@ -114,7 +114,7 @@ export default {
         }
     },
     created() {
-      console.log('plans  ',this.plans)
+      console.log('plans',this.plans)
         const totalTime = this.clockToSeconds(this.endTime).hour - this.calcStartDay(this.clockToSeconds(this.startTime))
 
         for (var i = 0; i < totalTime + 1; i++) {
@@ -122,8 +122,9 @@ export default {
         }
     },
     methods: {
-        showPlanDetails() {
-          console.log(this.plans)
+        showPlanDetails(p) {
+          console.log('p',p)
+          this.$emit('setPlan', p)
         },
         timeToPixel(time) {
             return (this.headerWidth * time) / 3600

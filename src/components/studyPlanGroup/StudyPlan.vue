@@ -44,11 +44,16 @@
                 :plans="studyPlan.plans"
                 :selected-major="selectedMajor"
                 :loading="studyPlan.loading"
+                :set-plan="selectPlan"
               />
             </v-card-text>
           </v-card>
         </v-expansion-panel-content>
-        <individual-plan-details />
+        <!--        <v-expansion-panel>-->
+        <individual-plan-details
+          :selected-plan="selectedPlan"
+        />
+        <!--        </v-expansion-panel>-->
       </v-card>
     </v-expansion-panel-content>
   </v-expansion-panel>
@@ -85,6 +90,10 @@ export default {
         })
       },
       type: Major
+    },
+    selectedPlan: {
+      type: PlanList,
+      default: new PlanList()
     }
   },
   components :{
@@ -522,6 +531,10 @@ export default {
   methods: {
     loadPlans () {
       this.studyPlan.plans = this.planList
+    },
+    selectPlan(p){
+      this.selectedPlan = p
+      console.log('selectPlan' , this.selectedPlan)
     }
   }
 }
