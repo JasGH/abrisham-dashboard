@@ -13,24 +13,27 @@
     </div>
     <div class="d-flex justify-center align-center profile-box ">
       <span
-        v-if="width.x > 350"
+        v-if="width.x > 768"
         class="name"
       >
-        شهاب عبادی
+        {{ user.full_name }}
       </span>
       <v-avatar
-        v-if="width.x > 350"
+        v-if="width.x > 768"
         class="avatar"
       >
         <img
-          src="https://cdn.vuetifyjs.com/images/john.jpg"
-          alt="John"
+          :src="user.photo"
+          :alt="user.full_name"
         >
       </v-avatar>
-      <i class="fi fi-rr-bell icon" />
+      <i
+        v-if="false"
+        class="fi fi-rr-bell icon"
+      />
 
       <div
-        v-if="width.x <= 350"
+        v-if="width.x <= 768"
         class="text-center"
       >
         <v-menu offset-y>
@@ -61,6 +64,8 @@
 </template>
 
 <script>
+import {User} from '../Models/User'
+
 export default {
   name: 'AppBar',
   props:{
@@ -70,6 +75,11 @@ export default {
         return {}
       }
     },
+  },
+  computed: {
+    user () {
+      return new User(this.$store.getters.user)
+    }
   },
   data(){
     return {
@@ -118,6 +128,7 @@ export default {
   font-size: 21px;
   color: #3e5480;
   font-weight: 500;
+  margin-right: 15px;
 }
 @media screen and (max-width: 1200px){
   .profile-box{

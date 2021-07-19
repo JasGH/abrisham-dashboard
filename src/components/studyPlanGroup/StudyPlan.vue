@@ -44,11 +44,12 @@
                 :plans="studyPlan.plans"
                 :selected-major="selectedMajor"
                 :loading="studyPlan.loading"
+                @planClicked="loadSelectedPlan"
               />
             </v-card-text>
           </v-card>
         </v-expansion-panel-content>
-        <individual-plan-details />
+        <individual-plan-details :selected-plan="selectedPlan" />
       </v-card>
     </v-expansion-panel-content>
   </v-expansion-panel>
@@ -57,7 +58,7 @@
 <script>
 import timeScheduleTable from './TimeScheduleTable'
 import { StudyPlan } from '@/Models/StudyPlan.js'
-import { PlanList } from '@/Models/Plan.js'
+import {Plan, PlanList} from '@/Models/Plan.js'
 import Major from '@/Models/Major'
 import IndividualPlanDetails from '@/components/studyPlanGroup/IndividualPlanDetails'
 
@@ -119,7 +120,19 @@ export default {
           'url': null,
           'voice': null,
           'video': null,
-          'contents': []
+          'contents': {
+            'list' : [
+              {
+                'short_title': '1 پیله راه ابریشم شیمی',
+                'title': 'پیله (قسمت اول)، محاسبات عددی (قسمت اول)',
+                'photo': 'https://cdn.alaatv.com/media/thumbnails/878/878001zrin.jpg',
+                'content_type': {
+                  'id': 8,
+                  'name': 'video'
+                }
+              }
+            ]
+          }
         },
         {
           'id': 2097,
@@ -142,7 +155,19 @@ export default {
           'url': null,
           'voice': null,
           'video': null,
-          'contents': []
+          'contents': {
+            'list' : [
+              {
+                'short_title': '1 پیله راه ابریشم شیمی',
+                'title': 'پیله (قسمت اول)، محاسبات عددی (قسمت اول)',
+                'photo': 'https://cdn.alaatv.com/media/thumbnails/878/878001zrin.jpg',
+                'content_type': {
+                  'id': 8,
+                  'name': 'voice'
+                }
+              }
+            ]
+          }
         },
         {
           'id': 2098,
@@ -165,7 +190,19 @@ export default {
           'url': null,
           'voice': null,
           'video': null,
-          'contents': []
+          'contents': {
+            'list' : [
+              {
+                'short_title': '1 پیله راه ابریشم شیمی',
+                'title': 'پیله (قسمت اول)، محاسبات عددی (قسمت اول)',
+                'photo': 'https://cdn.alaatv.com/media/thumbnails/878/878001zrin.jpg',
+                'content_type': {
+                  'id': 8,
+                  'name': 'voice'
+                }
+              }
+            ]
+          }
         },
         {
           'id': 2099,
@@ -188,7 +225,19 @@ export default {
           'url': null,
           'voice': null,
           'video': null,
-          'contents': []
+          'contents': {
+            'list' : [
+              {
+                'short_title': '1 پیله راه ابریشم شیمی',
+                'title': 'پیله (قسمت اول)، محاسبات عددی (قسمت اول)',
+                'photo': 'https://cdn.alaatv.com/media/thumbnails/878/878001zrin.jpg',
+                'content_type': {
+                  'id': 8,
+                  'name': 'voice'
+                }
+              }
+            ]
+          }
         },
         {
           'id': 2100,
@@ -211,7 +260,19 @@ export default {
           'url': null,
           'voice': null,
           'video': null,
-          'contents': []
+          'contents': {
+            'list' : [
+              {
+                'short_title': '1 پیله راه ابریشم شیمی',
+                'title': 'پیله (قسمت اول)، محاسبات عددی (قسمت اول)',
+                'photo': 'https://cdn.alaatv.com/media/thumbnails/878/878001zrin.jpg',
+                'content_type': {
+                  'id': 8,
+                  'name': 'video'
+                }
+              }
+            ]
+          }
         },
         {
           'id': 2101,
@@ -517,9 +578,14 @@ export default {
           ]
         }
       ]),
+      selectedPlan: [new Plan()]
     }
   },
   methods: {
+    loadSelectedPlan(plan){
+      this.selectedPlan = plan
+      console.log('plaaaaaaaan',this.selectedPlan)
+    },
     loadPlans () {
       this.studyPlan.plans = this.planList
     }

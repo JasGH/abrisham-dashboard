@@ -1,74 +1,135 @@
 <template>
-  <v-expansion-panel-content>
-    <div class="plan-details">
-      <v-card elevation="0">
-        <v-sheet
-          class="plan-sheet"
-        >
-          <v-row>
-            <v-col class="text-right plan-sheet-title-1">
-              از ساعت 13
-            </v-col>
-            <v-col class="plan-sheet-title-2">
-              شیمی
-            </v-col>
-            <v-col class="text-left plan-sheet-title-3">
-              تا ساعت 14:30
-            </v-col>
-          </v-row>
-        </v-sheet>
-        <v-card
-          class="plan-sheet-details"
-          elevation="0"
-        >
-          <v-row>
-            <v-col class="text-right plan-sheet-details-title">
-              توضیحات
-            </v-col>
-            <v-col class="text-right plan-sheet-details-title">
-              فیلم ها
-            </v-col>
-            <v-col class="text-right plan-sheet-details-title">
-              تایتل صدا
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col class="text-right plan-sheet-details-info">
-              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
-            </v-col>
-            <v-col class="text-right plan-sheet-details-video">
-              <div class="plan-sheet-details-video-box">
-                <div>
-                  <v-card
-                    elevation="0"
-                    class="plan-sheet-details-video-thumbnail"
-                  />
-                </div>
-                <div>
-                  <v-card
-                    elevation="0"
-                    class="plan-sheet-details-video-title"
-                  >
-                    فیلم جلسه 5 - حل تست فرسنگ ششم (قسمت فیلانقحخغنتحخفغنتخنتخنتختتلبرالزلزاعالنتلدذنتبلدنبتذدبلد
+  <v-expansion-panels
+    v-model="openedPanel"
+    flat
+    class="red"
+    multiple
+  >
+    <v-expansion-panel>
+      <v-expansion-panel-content>
+        <div class="plan-details">
+          <v-card
+            v-for="(item,index) in selectedPlan"
+            :key="index"
+            elevation="0"
+          >
+            <v-sheet
+              class="plan-sheet"
+              v-if="item.start !== null"
+            >
+              <v-row>
+                <v-col class="text-right plan-sheet-title-1">
+                  از ساعت {{ item.start.substr(0, 5) }}
+                </v-col>
+                <v-col class="plan-sheet-title-2">
+                  {{ item.title }}
+                </v-col>
+                <v-col class="text-left plan-sheet-title-3">
+                  تا ساعت {{ item.end.substr(0, 5) }}
+                </v-col>
+              </v-row>
+            </v-sheet>
+            <v-card
+              v-for="(content, id) in item.contents.list"
+              :key="id"
+              class="plan-sheet-details"
+              elevation="0"
+            >
+              <v-row>
+                <v-col class="plan-sheet-details-card">
+                  <v-card elevation="0" v-if="content.content_type.name === 'video'">
+<!--                    v-if="content.content_type.name === 'video'"-->
+                    <v-col class="text-right plan-sheet-details-title">
+                      فیلم ها
+                    </v-col>
+                    <v-col class="text-right plan-sheet-details-video">
+                      <div class="plan-sheet-details-video-box">
+                        <div>
+                          <v-card
+                            elevation="0"
+                            class="plan-sheet-details-video-thumbnail"
+                            @click="showSelectedPlan"
+                          >
+                            {{ content.photo }}
+                          </v-card>
+                        </div>
+                        <div>
+                          <v-card
+                            elevation="0"
+                            class="plan-sheet-details-video-title"
+                          >
+                            {{ content.title }}
+                            فیلم جلسه 5 - حل تست فرسنگ ششم (قسمت فیلانقحخغنتحخفغنتخنتخنتختتلبرالزلزاعالنتلدذنتبلدنبتذدبلد
+                          </v-card>
+                        </div>
+                      </div>
+                    </v-col>
                   </v-card>
-                </div>
-              </div>
-            </v-col>
-            <v-col class="text-right">
-              <v-card class="plan-sheet-details-voice" />
-            </v-col>
-          </v-row>
-        </v-card>
-      </v-card>
-    </div>
-  </v-expansion-panel-content>
+                </v-col>
+                <v-col class="text-right plan-sheet-details-voice" v-if="content.content_type.name === 'voice'">
+<!--                  v-if="content.content_type.name === 'voice'"-->
+                  <v-card elevation="0">
+                    <v-col class="text-right plan-sheet-details-title">
+                      تایتل صدا
+                    </v-col>
+                    <v-card class="plan-sheet-details-voice-card" />
+                  </v-card>
+                </v-col>
+                <v-col
+                  class="plan-sheet-details-card"
+                  cols="12"
+                >
+                  <v-card elevation="0">
+                    <v-col class="text-right plan-sheet-details-title">
+                      توضیحات
+                    </v-col>
+                    <v-col class="text-right plan-sheet-details-info">
+<!--                      {{ item.long_description }}-->
+                      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
+                    </v-col>
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-card>
+          </v-card>
+        </div>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </v-expansion-panels>
 </template>
 <script>
-export default {}
+// import {Plan} from '@/Models/Plan';
+
+export default {
+  props:{
+  selectedPlan: {
+    type: Array,
+    default(){
+      return []
+    }
+  }
+  },
+  methods:{
+    showSelectedPlan(){
+      console.log('plaaaaaaaan',this.selectedPlan)
+    }
+  },
+  data(){
+    return {
+      openedPanel : [0],
+
+    }
+  },
+  created() {
+     // console.log('وضعیت کانتنت',this.selectedPlan[0].contents.list[0].content_type.name)
+    // the content type : this.selectedPlan[0].contents.list[0].content_type.name
+    // the content photo : this.selectedPlan[0].contents.list[0].photo
+    // the content title : this.selectedPlan[0].contents.list[0].title
+  }
+}
 </script>
 <style>
 .plan-details {
-  padding: 0 24px 27px 24px;
   border-radius: 10px;
 }
 .theme--light.v-sheet .plan-sheet {
@@ -119,18 +180,27 @@ export default {}
   line-height: normal;
   letter-spacing: normal;
   color: #3e5480;
-  /*overflow-y: scroll;*/
+  /*overflow-y: scroll;
+  padding-top: 22px;
+  */
+}
+.plan-sheet-details-card{
+  padding-right: 0px;
 }
 .plan-sheet-details-video {
+  padding-bottom: 18px;
   border-radius: 10px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
   background-color: #eff3ff;
 }
-.theme--light.v-card .plan-sheet-details-voice{
-  border-radius: 40px;
+.theme--light.v-card .plan-sheet-details-voice-card{
+  border-radius: 40px !important;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   height: 60px;
+}
+.plan-sheet-details-voice{
+  padding-top: 22px
 }
 .theme--light.v-card .plan-sheet-details-video-thumbnail{
   border-radius: 5px;

@@ -2,6 +2,7 @@
   <!-- App.vue -->
   <v-app v-resize="onResize">
     <v-navigation-drawer
+      class="side-menu"
       app
       right
       permanent
@@ -17,13 +18,16 @@
     <v-main>
       <!-- Provides the application the proper gutter -->
       <v-container fluid>
-        <expansion-menu v-if=" windowSize.x <=350" />
+        <expansion-menu v-if=" windowSize.x <= 768" />
         <!-- If using vue-router -->
         <router-view />
       </v-container>
     </v-main>
 
-    <v-footer app>
+    <v-footer
+      v-if="false"
+      app
+    >
       <!-- -->
     </v-footer>
   </v-app>
@@ -73,6 +77,7 @@ export default {
   },
   created() {
     this.login()
+    this.getUserInfo()
   },
   methods: {
     login () {
@@ -85,6 +90,12 @@ export default {
             })
       }
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + access_token
+    },
+    getUserInfo () {
+      axios.get('/api/v2/user')
+      .then( (response) => {
+        console.log('res', response)
+      })
     },
     onResize () {
       this.$store.commit('updateWindowSize', { x: window.innerWidth, y: window.innerHeight })
@@ -102,5 +113,11 @@ export default {
 }
 @media screen and (max-width: 320px){
 
+}
+</style>
+
+<style>
+.v-navigation-drawer.side-menu {
+  min-height: 100%;
 }
 </style>
