@@ -21,19 +21,21 @@
           append-icon="mdi-chevron-down"
         />
       </div>
-      <v-row>
-        <v-expansion-panels
-          v-for="(item, index) in studyPlanList.list"
-          :key="index"
-          flat
-          class="study-plan-expansion"
-        >
-          <study-plan
-            :study-plan="item"
-            :selected-major="selectedMajor"
-          />
-        </v-expansion-panels>
-      </v-row>
+      <div class="all-the-expansions">
+        <v-row>
+          <v-expansion-panels
+            v-for="(item, index) in studyPlanList.list"
+            :key="index"
+            flat
+            class="study-plan-expansion"
+          >
+            <study-plan
+              :study-plan="item"
+              :selected-major="selectedMajor"
+            />
+          </v-expansion-panels>
+        </v-row>
+      </div>
     </v-card>
   </div>
 </template>
@@ -226,6 +228,12 @@ export default {
   border-radius: 50%;
   background-color: #FFFFFF;
   padding: 2px 6px 0 6px;
+}
+
+.all-the-expansions{
+  height: 550px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 </style>
 <style>

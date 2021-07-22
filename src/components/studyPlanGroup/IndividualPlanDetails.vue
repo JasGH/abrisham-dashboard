@@ -2,7 +2,6 @@
   <v-expansion-panels
     v-model="openedPanel"
     flat
-    class="red"
     multiple
   >
     <v-expansion-panel>
@@ -38,7 +37,9 @@
               <v-row>
                 <v-col
                   v-if="content.content_type.name === 'video'"
+                  v-ripple
                   class="plan-sheet-details-card"
+                  @click="contentClicked(content)"
                 >
                   <v-card
                     elevation="0"
@@ -47,13 +48,19 @@
                     <v-col class="text-right plan-sheet-details-title">
                       فیلم ها
                     </v-col>
-                    <v-col class="text-right plan-sheet-details-video">
+                    <v-col
+                      v-ripple
+                      class="text-right plan-sheet-details-video"
+                      hover
+                      @click="contentClicked(content.content_id)"
+                    >
                       <div class="plan-sheet-details-video-box">
                         <div>
                           <v-card
                             elevation="0"
                             class="plan-sheet-details-video-thumbnail"
-                            @click="showSelectedPlan"
+                            hover
+                            @click="contentClicked(content.content_id)"
                           >
                             <v-img :src="content.photo" />
                           </v-card>
@@ -62,6 +69,7 @@
                           <v-card
                             elevation="0"
                             class="plan-sheet-details-video-title"
+                            hover
                           >
                             {{ content.title }}
                             فیلم جلسه 5 - حل تست فرسنگ ششم (قسمت فیلانقحخغنتحخفغنتخنتخنتختتلبرالزلزاعالنتلدذنتبلدنبتذدبلد
@@ -81,7 +89,9 @@
                     <v-col class="text-right plan-sheet-details-title">
                       تایتل صدا
                     </v-col>
-                    <v-card class="plan-sheet-details-voice-card" />
+                    <v-card
+                      class="plan-sheet-details-voice-card"
+                    />
                   </v-card>
                 </v-col>
                 <v-col
@@ -114,17 +124,21 @@ export default {
     default(){
       return []
     }
+    },
+  openedPanel:{
+    type: Array,
+    default(){
+      return []
+    }
   }
   },
   methods:{
-    showSelectedPlan(){
-      console.log('plaaaaaaaan',this.selectedPlan)
-    }
-  },
-  data(){
-    return {
-      openedPanel : [0],
-
+    // showSelectedPlan(){
+    //   console.log('plaaaaaaaan',this.selectedPlan)
+    // },
+    contentClicked(content){
+      this.$emit('contentClicked' , content )
+      console.log('selectedContent' , content)
     }
   },
   created() {
@@ -221,7 +235,7 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   height: 25px;
-  width: 340px;
+  width: 600px;
   white-space:nowrap;
   font-size: 16px;
   font-weight: 500;

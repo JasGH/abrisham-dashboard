@@ -1,5 +1,8 @@
 <template>
-  <v-expansion-panel>
+  <v-expansion-panel
+    v-model="openedStudyPanel"
+    @click="onExpansionPanelClick"
+  >
     <v-expansion-panel-header class="study-plan-expansion-header">
       <v-row>
         <v-col
@@ -49,7 +52,10 @@
             </v-card-text>
           </v-card>
         </v-expansion-panel-content>
-        <individual-plan-details :selected-plan="selectedPlan" />
+        <individual-plan-details
+          :selected-plan="selectedPlan"
+          :opened-panel="openedPanel"
+        />
       </v-card>
     </v-expansion-panel-content>
   </v-expansion-panel>
@@ -586,16 +592,49 @@ export default {
           ]
         }
       ]),
-      selectedPlan: [new Plan()]
+      selectedPlan: [new Plan()],
+      openedPanel : [],
+      openedStudyPanel : [],
+      timesStudyPanelIsClicked : 0,
+      timesThePlanPanelIsClicked : 0
     }
   },
   methods: {
     loadSelectedPlan(plan){
-      this.selectedPlan = plan
-      console.log('plaaaaaaaan',this.selectedPlan)
+      this.timesThePlanPanelIsClicked ++
+      if (this.selectedPlan[0].title !== plan[0].title){ //checks if the plan is the same
+        this.selectedPlan = plan
+          this.openedPanel = [0]
+          console.log('plaaaaaaaan',this.selectedPlan)
+          console.log('timesThePlanPanelIsClicked   ' + this.timesThePlanPanelIsClicked)
+          this.timesThePlanPanelIsClicked ++
+      }
+      else {
+        // chosen plan is the same
+          if (this.timesThePlanPanelIsClicked %2 !== 0){
+            // chosen plan is the same but it's okay
+            this.selectedPlan = plan
+            this.openedPanel = [0]
+            console.log('plaaaaaaaan',this.selectedPlan)
+            console.log('timesThePlanPanelIsClicked    ' + this.timesThePlanPanelIsClicked)
+          }
+        else {
+            this.openedPanel = []
+            console.log('timesThePlanPanelIsClicked   ' + this.timesThePlanPanelIsClicked)
+          }
+
+        }
     },
     loadPlans () {
       this.studyPlan.plans = this.planList
+    },
+    onExpansionPanelClick() {
+      this.timesStudyPanelIsClicked ++
+      console.log('i is' + this.timesStudyPanelIsClicked)
+      if (this.timesStudyPanelIsClicked % 2 === 0){ //checks if the panel is closed
+        this.openedPanel = []
+        this.timesThePlanPanelIsClicked = 0
+      }
     }
   }
 }
