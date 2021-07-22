@@ -253,4 +253,25 @@ export default {
   flex-direction: row;
   align-items: center;
 }
+@media only screen and (max-width: 1200px){
+  .plan-sheet-details-title{
+    padding-bottom: 0;
+  }
+  .plan-sheet-details-card .plan-sheet-details-info{
+    padding-top: 0;
+    padding-right: 0;
+  }
+}
+@media only screen and (max-width: 990px){
+  .plan-sheet-details-title {
+    display: none;
+  }
+  .theme--light.v-card .plan-sheet-details-video-title {
+    width: 300px;
+  }
+  .plan-sheet-details-video{
+    padding-top: 0px;
+    padding-bottom: 8px;
+  }
+}
 </style>

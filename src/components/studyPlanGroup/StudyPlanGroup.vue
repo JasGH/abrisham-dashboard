@@ -93,7 +93,7 @@ export default {
 
 <style scoped>
 .major-card .v-text-field.v-text-field--enclosed {
-  padding-top: 12px !important;
+  padding-top: 22px;
   margin-right: 15px !important;
 }
 
@@ -235,9 +235,45 @@ export default {
   overflow-y: scroll;
   overflow-x: hidden;
 }
+@media only screen and (max-width: 1900px){
+  .study-plan .major-card .v-input {
+    max-width: 15%;
+  }
+  .major-card-text .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot, .v-text-field.v-text-field--enclosed .v-text-field__details {
+    margin-bottom: -4px;
+  }
+  .major-card .v-text-field.v-text-field--enclosed {
+    padding-top: 12px ;
+  }
+}
+@media only screen and (max-width: 1200px){
+  .study-plan .major-card {
+    margin-top: -32px;
+  }
+  .major-card .v-text-field.v-text-field--enclosed {
+    padding-top: 27px;
+  }
+  .plan-sheet-details-title{
+    padding-bottom: 0;
+  }
+  .plan-sheet-details-card .plan-sheet-details-info{
+    padding-top: 0;
+    padding-right: 0;
+  }
+}
+@media only screen and (max-width: 990px){
+  .plan-sheet-details-title {
+    display: none;
+  }
+}@media only screen and (max-width: 768px){
+  .v-card__title {
+    font-size: 18px;
+  }
+}
 </style>
 <style>
 .v-text-field fieldset, .v-text-field .v-input__control, .v-text-field .v-input__slot {
   border-radius: 10px !important;
 }
+
 </style>

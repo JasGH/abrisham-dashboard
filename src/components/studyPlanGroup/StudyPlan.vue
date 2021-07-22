@@ -685,7 +685,7 @@ export default {
   line-height: normal;
   letter-spacing: normal;
   text-align: center;
-  background-color: #feedbb;
+  background-color: #eff3ff;
   color: #3e5480;
   border-color: #FFFFFF;
   padding-top: 7px;
