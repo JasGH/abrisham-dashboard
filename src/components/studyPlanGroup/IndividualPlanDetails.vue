@@ -14,8 +14,8 @@
             elevation="0"
           >
             <v-sheet
-              class="plan-sheet"
               v-if="item.start !== null"
+              class="plan-sheet"
             >
               <v-row>
                 <v-col class="text-right plan-sheet-title-1">
@@ -36,9 +36,14 @@
               elevation="0"
             >
               <v-row>
-                <v-col class="plan-sheet-details-card">
-                  <v-card elevation="0" v-if="content.content_type.name === 'video'">
-<!--                    v-if="content.content_type.name === 'video'"-->
+                <v-col
+                  v-if="content.content_type.name === 'video'"
+                  class="plan-sheet-details-card"
+                >
+                  <v-card
+                    elevation="0"
+                  >
+                    <!--                    v-if="content.content_type.name === 'video'"-->
                     <v-col class="text-right plan-sheet-details-title">
                       فیلم ها
                     </v-col>
@@ -50,7 +55,7 @@
                             class="plan-sheet-details-video-thumbnail"
                             @click="showSelectedPlan"
                           >
-                            {{ content.photo }}
+                            <v-img :src="content.photo" />
                           </v-card>
                         </div>
                         <div>
@@ -66,8 +71,12 @@
                     </v-col>
                   </v-card>
                 </v-col>
-                <v-col class="text-right plan-sheet-details-voice" v-if="content.content_type.name === 'voice'">
-<!--                  v-if="content.content_type.name === 'voice'"-->
+                <v-col
+                  v-if="content.content_type.name === 'voice'"
+                  class="text-right plan-sheet-details-voice"
+                  cols="12"
+                >
+                  <!--                  v-if="content.content_type.name === 'voice'"-->
                   <v-card elevation="0">
                     <v-col class="text-right plan-sheet-details-title">
                       تایتل صدا
@@ -76,6 +85,7 @@
                   </v-card>
                 </v-col>
                 <v-col
+                  v-if="content.description !== null"
                   class="plan-sheet-details-card"
                   cols="12"
                 >
@@ -84,8 +94,7 @@
                       توضیحات
                     </v-col>
                     <v-col class="text-right plan-sheet-details-info">
-<!--                      {{ item.long_description }}-->
-                      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
+                      {{ content.description }}
                     </v-col>
                   </v-card>
                 </v-col>
@@ -98,8 +107,6 @@
   </v-expansion-panels>
 </template>
 <script>
-// import {Plan} from '@/Models/Plan';
-
 export default {
   props:{
   selectedPlan: {
@@ -200,7 +207,8 @@ export default {
   height: 60px;
 }
 .plan-sheet-details-voice{
-  padding-top: 22px
+  padding-top: 22px;
+  padding-right: 0px;
 }
 .theme--light.v-card .plan-sheet-details-video-thumbnail{
   border-radius: 5px;
