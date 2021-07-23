@@ -810,13 +810,22 @@ export default {
   }
 
   .theme--light.v-sheet .study-plan-sheet {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 @media only screen and (max-width: 576px){
   .study-plan .study-plan-expansion-header {
     padding-left: 18px;
     padding-right: 18px;
+  }
+  .theme--light.v-sheet .study-plan-sheet {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 350px){
+  .study-plan .study-plan-expansion-header {
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 </style>

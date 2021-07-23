@@ -243,7 +243,7 @@ export default {
     margin-bottom: -4px;
   }
   .major-card .v-text-field.v-text-field--enclosed {
-    padding-top: 12px ;
+    padding-top: 20px ;
   }
 }
 @media only screen and (max-width: 1200px){

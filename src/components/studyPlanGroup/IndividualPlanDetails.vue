@@ -44,7 +44,6 @@
                   <v-card
                     elevation="0"
                   >
-                    <!--                    v-if="content.content_type.name === 'video'"-->
                     <v-col class="text-right plan-sheet-details-title">
                       فیلم ها
                     </v-col>
@@ -82,7 +81,6 @@
                 <v-col
                   v-if="content.content_type.name === 'voice'"
                   class="text-right plan-sheet-details-voice"
-                  cols="12"
                 >
                   <!--                  v-if="content.content_type.name === 'voice'"-->
                   <v-card elevation="0">
@@ -91,7 +89,22 @@
                     </v-col>
                     <v-card
                       class="plan-sheet-details-voice-card"
-                    />
+                    >
+                      <audio
+                        controls
+                        class="plan-sheet-details-voice-audio"
+                      >
+                        <source
+                          :src="content.voice"
+                          type="audio/ogg"
+                        >
+                        <source
+                          :src="content.voice"
+                          type="audio/mpeg"
+                        >
+                        مرورگر شما از پخش کننده صدا پشتیبانی نمیکند.
+                      </audio>
+                    </v-card>
                   </v-card>
                 </v-col>
                 <v-col
@@ -218,7 +231,8 @@ export default {
   border-radius: 40px !important;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
-  height: 60px;
+  height: 40px;
+  margin-top: 10px;
 }
 .plan-sheet-details-voice{
   padding-top: 22px;
@@ -253,6 +267,15 @@ export default {
   flex-direction: row;
   align-items: center;
 }
+.plan-sheet-details-voice-audio{
+  width: 100%;
+  height: 40px;
+  border-radius: 40px !important;
+
+}
+.plan-details .theme--light.v-image {
+  border-radius: 5px !important;
+}
 @media only screen and (max-width: 1200px) {
   .plan-sheet-details-title {
     padding-bottom: 0;
@@ -268,45 +291,35 @@ export default {
     display: none;
   }
   .theme--light.v-card .plan-sheet-details-video-title {
-    width: 221px;
+    width: 331px;
+    padding-top: 8px;
+    height: 50px;
   }
   .plan-sheet-details-video{
     padding-top: 0px;
     padding-bottom: 0;
   }
-  .theme--light.v-card .plan-sheet-details-video-title {
-    height: 26px;
-  }
-  .theme--light.v-sheet .plan-sheet {
-    font-size: 12px;
-  }
-  .theme--light.v-card .plan-sheet-details-video-title {
-    font-size: 12px;
-    padding-top: 0;
-  }
   .theme--light.v-card .plan-sheet-details-video-thumbnail {
     height: 30px;
-  }
-  .v-responsive__sizer {
-    padding-bottom: 30px !important;
-  }
-  .theme--light.v-card .plan-sheet-details-video-thumbnail {
-    width: 54px;
-  }
-  .theme--light.v-card .plan-sheet-details-video-thumbnail {
+    width: 64px;
     margin-top: 5px;
     margin-bottom: 5px;
   }
-  .v-expansion-panel-content__wrap {
+  .plan-details .v-responsive__sizer {
+    padding-bottom: 30px !important;
+  }
+  .plan-details .v-expansion-panel-content__wrap {
     padding-right: 24px;
     padding-left: 24px;
   }
 }
 @media only screen and (max-width: 768px){
-  .theme--light.v-image {
-    border-radius: 3px !important;
-  }
+
   .theme--light.v-card .plan-sheet-details-video-thumbnail {
+    height: 30px;
+    width: 54px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     border-radius: 3px;
   }
   .theme--light.v-card .plan-sheet-details-voice-card {
@@ -341,6 +354,21 @@ export default {
   .v-expansion-panel-content__wrap {
     padding-right: 6px;
     padding-left: 6px;
+  }
+  .theme--light.v-sheet .plan-sheet {
+    font-size: 12px;
+  }
+  .theme--light.v-card .plan-sheet-details-video-title {
+    padding-top: 0px;
+    font-size: 12px;
+    width: 221px;
+    height: 26px;
+  }
+  .theme--light.v-card .plan-sheet-details-video-thumbnail {
+    height: 30px;
+  }
+  responsive__sizer {
+    padding-bottom: 30px !important;
   }
 }
 @media only screen and (max-width: 578px){
