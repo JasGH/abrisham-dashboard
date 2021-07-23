@@ -711,7 +711,7 @@ export default {
 }
 
 .study-plan .study-plan-expansion {
-  padding: 0 60px 0 60px !important;
+  padding: 0 60px 0 60px ;
 }
 
 .study-plan .major-card .major-card-text {
@@ -782,6 +782,42 @@ export default {
 .study-plan-card .theme--light.v-card > .v-card__text, .theme--light.v-card > .v-card__subtitle {
   color: rgba(0, 0, 0, 0.6);
   background-color: #e1f0ff;
+}
+@media only screen and (max-width: 990px){
+  .v-expansion-panel-content__wrap {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .v-card__title {
+    font-size: 16px;
+  }
+
+  .study-plan .major-card {
+    margin-right: 147px;
+    margin-top: -22px;
+  }
+
+  .study-plan .major-card .v-input {
+    max-width: 30%;
+  }
+
+  .study-plan .study-plan-expansion-header {
+    font-size: 14px;
+    padding-left: 23px;
+    padding-right: 23px;
+  }
+
+  .theme--light.v-sheet .study-plan-sheet {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 576px){
+  .study-plan .study-plan-expansion-header {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
 }
 </style>
 <style>

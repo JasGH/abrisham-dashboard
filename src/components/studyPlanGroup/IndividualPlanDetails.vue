@@ -225,7 +225,7 @@ export default {
   padding-right: 0px;
 }
 .theme--light.v-card .plan-sheet-details-video-thumbnail{
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #ffceab;
   height: 42px;
   width: 72px;
@@ -253,11 +253,12 @@ export default {
   flex-direction: row;
   align-items: center;
 }
-@media only screen and (max-width: 1200px){
-  .plan-sheet-details-title{
+@media only screen and (max-width: 1200px) {
+  .plan-sheet-details-title {
     padding-bottom: 0;
   }
-  .plan-sheet-details-card .plan-sheet-details-info{
+
+  .plan-sheet-details-card .plan-sheet-details-info {
     padding-top: 0;
     padding-right: 0;
   }
@@ -267,11 +268,89 @@ export default {
     display: none;
   }
   .theme--light.v-card .plan-sheet-details-video-title {
-    width: 300px;
+    width: 221px;
   }
   .plan-sheet-details-video{
     padding-top: 0px;
-    padding-bottom: 8px;
+    padding-bottom: 0;
+  }
+  .theme--light.v-card .plan-sheet-details-video-title {
+    height: 26px;
+  }
+  .theme--light.v-sheet .plan-sheet {
+    font-size: 12px;
+  }
+  .theme--light.v-card .plan-sheet-details-video-title {
+    font-size: 12px;
+    padding-top: 0;
+  }
+  .theme--light.v-card .plan-sheet-details-video-thumbnail {
+    height: 30px;
+  }
+  .v-responsive__sizer {
+    padding-bottom: 30px !important;
+  }
+  .theme--light.v-card .plan-sheet-details-video-thumbnail {
+    width: 54px;
+  }
+  .theme--light.v-card .plan-sheet-details-video-thumbnail {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .v-expansion-panel-content__wrap {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+@media only screen and (max-width: 768px){
+  .theme--light.v-image {
+    border-radius: 3px !important;
+  }
+  .theme--light.v-card .plan-sheet-details-video-thumbnail {
+    border-radius: 3px;
+  }
+  .theme--light.v-card .plan-sheet-details-voice-card {
+    height: 40px;
+  }
+  .plan-sheet-details-voice {
+    padding-top: 10px;
+    padding-bottom: 0px;
+  }
+  .plan-sheet-details-info {
+    font-size: 12px;
+  }
+  .plan-sheet-details-card {
+    padding-right: 0px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+  .plan-sheet-details-card .plan-sheet-details-info {
+    padding-bottom: 0;
+  }
+  .v-expansion-panel-content__wrap {
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 10px;
+  }
+  .plan-details .plan-sheet .plan-sheet-title-1 {
+    padding-right: 28px;
+  }
+  .plan-details .plan-sheet .plan-sheet-title-3 {
+    padding-left: 28px;
+  }
+  .v-expansion-panel-content__wrap {
+    padding-right: 6px;
+    padding-left: 6px;
+  }
+}
+@media only screen and (max-width: 578px){
+  .study-plan .major-card {
+    margin-right: 182px;
+  }
+}
+@media only screen and (max-width: 406px){
+  .theme--light.v-card .plan-sheet-details-video-title {
+    width: 120px;
   }
 }
 </style>

@@ -262,6 +262,19 @@ export default {
     .timeTable {
         border-radius: 0;
     }
+  .timeTable-main-line{
+    height: 37px;
+  }
+  .plan {
+    padding-top: 47px;
+  }
+  .timeTable-body {
+    height: 36px;
+  }
+  .plan-within-box {
+    border-radius: 8px;
+  }
+
 }
 </style>
 
