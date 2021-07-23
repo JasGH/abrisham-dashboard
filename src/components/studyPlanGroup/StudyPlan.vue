@@ -596,20 +596,20 @@ export default {
       openedPanel : [],
       openedStudyPanel : [],
       timesStudyPanelIsClicked : 0,
-      timesThePlanPanelIsClicked : 0
+      timesThePlanPanelIsClicked : 1
     }
   },
   methods: {
     loadSelectedPlan(plan){
-      this.timesThePlanPanelIsClicked ++
-      if (this.selectedPlan[0].title !== plan[0].title){ //checks if the plan is the same
+      if (this.selectedPlan[0].title !== plan[0].title){ //checks if the plan is not the same
         this.selectedPlan = plan
           this.openedPanel = [0]
           console.log('plaaaaaaaan',this.selectedPlan)
           console.log('timesThePlanPanelIsClicked   ' + this.timesThePlanPanelIsClicked)
-          this.timesThePlanPanelIsClicked ++
+          // this.timesThePlanPanelIsClicked ++
       }
       else {
+        this.timesThePlanPanelIsClicked ++
         // chosen plan is the same
           if (this.timesThePlanPanelIsClicked %2 !== 0){
             // chosen plan is the same but it's okay
@@ -630,7 +630,7 @@ export default {
     },
     onExpansionPanelClick() {
       this.timesStudyPanelIsClicked ++
-      console.log('i is' + this.timesStudyPanelIsClicked)
+      console.log('i is  ' + this.timesStudyPanelIsClicked)
       if (this.timesStudyPanelIsClicked % 2 === 0){ //checks if the panel is closed
         this.openedPanel = []
         this.timesThePlanPanelIsClicked = 0
