@@ -367,7 +367,7 @@ export default {
   .theme--light.v-card .plan-sheet-details-video-thumbnail {
     height: 30px;
   }
-  responsive__sizer {
+  .responsive__sizer {
     padding-bottom: 30px !important;
   }
 }
